@@ -18,12 +18,46 @@ export interface Uniform {
   code: string;
   name: string;
   category: string;
+  type: string;
   size: string;
   color: string;
   price: number;
   stock: number;
   imageUrl?: string;
   lastUpdated: string;
+}
+
+export interface Vendor {
+  id: string;
+  name: string;
+  contact: string;
+  address: string;
+  type: string;
+}
+
+export interface PurchaseOrder {
+  id: string;
+  vendorId: string;
+  items: {
+    name: string;
+    quantity: number;
+    estimatedPrice: number;
+  }[];
+  status: 'PENDING' | 'ORDERED' | 'RECEIVED';
+  createdAt: string;
+}
+
+export interface ProcurementRecord {
+  id: string;
+  date: string;
+  vendorId: string;
+  items: {
+    uniformId: string;
+    quantity: number;
+    cost: number;
+    name: string;
+  }[];
+  totalCost: number;
 }
 
 export interface ShippingInfo {
@@ -46,11 +80,4 @@ export interface Transaction {
   paymentMethod: 'CASH' | 'TRANSFER';
   status: 'PENDING' | 'PAID';
   createdAt: string;
-}
-
-export interface DashboardStats {
-  totalSales: number;
-  totalTransactions: number;
-  lowStockItems: number;
-  totalUsers: number;
 }
