@@ -1,0 +1,5 @@
+{
+  "name": "Uniform POS & Inventory System",
+  "description": "A comprehensive management system for uniform sales with roles for Admin, Warehouse (Gudang), and Cashier (Kasir), featuring inventory management, point of sale, and analytics.",
+  "requestFramePermissions": []
+}
