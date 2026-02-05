@@ -11,7 +11,8 @@ import {
   X,
   Bell,
   User as UserIcon,
-  ChevronRight
+  ChevronRight,
+  ClipboardList
 } from 'lucide-react';
 import { User, UserRole } from './types';
 import Login from './pages/Login';
@@ -19,6 +20,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Inventory from './pages/Inventory';
 import Transactions from './pages/Transactions';
+import TransactionHistory from './pages/TransactionHistory';
 import UsersList from './pages/UsersList';
 
 const App: React.FC = () => {
@@ -56,7 +58,8 @@ const App: React.FC = () => {
                 <Routes>
                   <Route path="/dashboard" element={<Dashboard user={currentUser} />} />
                   <Route path="/inventory" element={<Inventory user={currentUser} />} />
-                  <Route path="/transactions" element={<Transactions user={currentUser} />} />
+                  <Route path="/pos" element={<Transactions user={currentUser} />} />
+                  <Route path="/transactions" element={<TransactionHistory user={currentUser} />} />
                   <Route path="/users" element={<UsersList user={currentUser} />} />
                   <Route path="*" element={<Navigate to="/dashboard" />} />
                 </Routes>
@@ -85,7 +88,8 @@ const AuthenticatedLayout: React.FC<AuthenticatedLayoutProps> = ({ user, onLogou
   const menuItems = [
     { name: 'Dashboard', icon: <LayoutDashboard size={20} />, path: '/dashboard', roles: [UserRole.ADMIN, UserRole.GUDANG, UserRole.KASIR] },
     { name: 'Inventory', icon: <Package size={20} />, path: '/inventory', roles: [UserRole.ADMIN, UserRole.GUDANG] },
-    { name: 'Point of Sale', icon: <ShoppingCart size={20} />, path: '/transactions', roles: [UserRole.ADMIN, UserRole.KASIR] },
+    { name: 'Point of Sale', icon: <ShoppingCart size={20} />, path: '/pos', roles: [UserRole.ADMIN, UserRole.KASIR] },
+    { name: 'Transactions', icon: <ClipboardList size={20} />, path: '/transactions', roles: [UserRole.ADMIN, UserRole.KASIR] },
     { name: 'User Management', icon: <UsersIcon size={20} />, path: '/users', roles: [UserRole.ADMIN] },
   ];
 
